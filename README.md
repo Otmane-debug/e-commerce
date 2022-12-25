@@ -1,3 +1,10 @@
+
+
+![alt text](https://github.com/Otmane-debug/e-commerce/home.png)
+![alt text](https://github.com/Otmane-debug/e-commerce/shop.png)
+![alt text](https://github.com/Otmane-debug//e-commerce/login.png)
+![alt text](https://github.com/Otmane-debug//e-commerce/sign up.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
