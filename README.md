@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/Otmane-debug/e-commerce/blob/main/home.png)
 ![alt text](https://github.com/Otmane-debug/e-commerce/blob/main/shop.png)
-![alt text](https://github.com/Otmane-debug//e-commerce/blob/main/login.png)
+![alt text](https://github.com/Otmane-debug/e-commerce/blob/main/login.png)
 ![alt text](https://github.com/Otmane-debug/e-commerce/blob/main/sign%20up.png)
 
 # Getting Started with Create React App
