@@ -7,17 +7,19 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import Product from './components/Product';
 import axios from 'axios';
+import Login from './components/Login';
+import Register from './components/Register';
+import PrivateRoute from './utils/PrivateRoute'
+import { AuthProvider } from './context/AuthContext';
 
 
 export default class App extends Component {
   
-
   state = {
     products: [],
   };
 
   componentDidMount(){
-    let data;
     axios.get('http://localhost:8000/api/products/')
     .then((res) => {
         this.setState({ products: res.data });
@@ -25,24 +27,30 @@ export default class App extends Component {
     .catch(err => {})
   }
 
-
-
   render() {
 
     return (
       <>
-        <Haider />
-        <BrowserRouter>
-            <Routes>
-              <Route exact path='/' element={<Home />} />
-              <Route path='/Shop' element={<Shop elements={this.state.products} />} />
-              <Route path='/Cutumer_car' element={<Home />} />
-              {this.state.products.map(product => {
-                return <Route path={'/product/' + product["Model_id"]} element={<Product product={product}  />} />
-              })}
-            </Routes>  
-          </BrowserRouter>
-        <Footer />
+        <AuthProvider>
+          <Haider />
+          <BrowserRouter>
+              <Routes>
+                  <Route exact path='/' element={<Home />} />
+                  <Route path='/Login' element={<Login />} />
+                  <Route path='/Cutumer_car' element={<Home />} />
+                  <Route path='/Register' element={<Register />} />
+                  <Route element={<PrivateRoute />} >
+                    <Route path='/Shop' element={<Shop elements={this.state.products} />} />
+
+                    {this.state.products.map(product => {
+                      return <Route path={'/product/' + product["Model_id"]} element={<Product product={product}  />} />
+                    })}
+                  </Route>
+              </Routes> 
+            </BrowserRouter>
+          <Footer />
+        </AuthProvider> 
+
       </>
     );
   }
