@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Shop from './components/Shop';
 import Footer from './components/Footer';
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import Product from './components/Product';
 import axios from 'axios';
 import Login from './components/Login';
@@ -31,9 +31,10 @@ export default class App extends Component {
 
     return (
       <>
-        <AuthProvider>
-          <Haider />
+          
           <BrowserRouter>
+            <AuthProvider>  
+              <Haider />
               <Routes>
                   <Route exact path='/' element={<Home />} />
                   <Route path='/Login' element={<Login />} />
@@ -46,10 +47,11 @@ export default class App extends Component {
                       return <Route path={'/product/' + product["Model_id"]} element={<Product product={product}  />} />
                     })}
                   </Route>
+                  <Route path="/*" element={<Outlet />} />
               </Routes> 
-            </BrowserRouter>
-          <Footer />
-        </AuthProvider> 
+              <Footer />
+            </AuthProvider> 
+          </BrowserRouter>
 
       </>
     );
